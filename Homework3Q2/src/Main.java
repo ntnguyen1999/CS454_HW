@@ -36,7 +36,7 @@ public class Main {
             try{
                 if (preferred == true) {
                     preferredWidthdraw++; // add another withdraw to the waiting list
-                    while (balance < k) {
+                    while (balance <= k) {
                         enoughBalancePrefered.await();
                     }
                     preferredWidthdraw--; // remove a withdraw from the waiting list
@@ -45,7 +45,7 @@ public class Main {
                 }
                 else{
 
-                    while (balance < k && preferredWidthdraw > 0) { // wait until the balance is valid and when there is no preferred withdrawn
+                    while (balance <= k && preferredWidthdraw > 0) { // wait until the balance is valid and when there is no preferred withdrawn
                         enoughBalance.await();
                     }
                     preferredWidthdraw--;
